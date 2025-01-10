@@ -1,12 +1,32 @@
 import avatar from "./images/Avatar.png";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import styled from "styled-components";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  Navigate,
+} from "react-router-dom";
+import Home from "./component/Home";
 import Gallery from "./component/Gallery";
 import FAQ from "./component/FAQ";
 import AboutUs from "./component/AboutUs";
 import "./App.css";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    const handleScroll = () => {
+      document.body.classList.add("scroll-active");
+      clearTimeout(window.scrollTimeout);
+      window.scrollTimeout = setTimeout(() => {
+        document.body.classList.remove("scroll-active");
+      }, 500);
+    };
+    document.addEventListener("scroll", handleScroll);
+    return () => {
+      document.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <div className="App">
       <Router>
@@ -33,19 +53,13 @@ function App() {
           </nav>
         </header>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route index path="/" element={<Home />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </Router>
-    </div>
-  );
-}
-function Home() {
-  return (
-    <div>
-      <h2>main</h2>
     </div>
   );
 }

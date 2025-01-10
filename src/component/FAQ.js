@@ -1,9 +1,22 @@
-import React from "react";
+import styled from "styled-components";
+const Wrapper = styled.div`
+  padding-top: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+const Container = styled.div`
+  width: 100%;
+`;
 function FAQ() {
   return (
-    <div>
-      <h2>FAQ</h2>
-    </div>
+    <Wrapper>
+      <Container>
+        <h2>FAQ</h2>
+      </Container>
+    </Wrapper>
   );
 }
 export default FAQ;

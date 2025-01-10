@@ -1,12 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR:wght@100..900&display=swap");
 * {
   margin: 0;
+  font-family: "Noto Sans KR", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+body {
+  overflow: overlay;
+}
+body::-webkit-scrollbar {
+  width: 10px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+body::-webkit-scrollbar-thumb {
+  background: #b0bccc; /* 스크롤바 막대 색상 */
+  border-radius: 12px;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #90a0b0;
+}
+body.scroll-active::-webkit-scrollbar {
+  opacity: 1;
 }
 nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
   padding: 10px auto;
   position: absolute;
   width: 100%;
